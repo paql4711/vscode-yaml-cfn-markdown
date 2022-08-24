@@ -58,7 +58,7 @@
 					"include": "#yamlcfn-interpolated-single-quoted"
 				},
 				{
-					"include": "#yamlcfn-interpolated-raw"
+					"include": "#yamlcfn-interpolated-raw-out"
 				}
 			]
 		},
@@ -152,7 +152,7 @@
 				}
 			]
 		},
-		"yamlcfn-interpolated-raw": {
+		"yamlcfn-interpolated-raw-in": {
 			"begin": "\\G(?=([^'\"\\|]))",
 			"captures": {
 				"0": {
@@ -161,6 +161,21 @@
 			},
 			"contentName": "string.interpolated.sub.raw.yamlcfn",
 			"end": "(?x)\n                                (?=\n                                      \\s* $\n                                    | \\s+ \\#\n                                    | \\s* : (\\s|$)\n                                    | \\s* : [\\[\\]{},]\n                                    | \\s* [\\[\\]{},]\n                                )\n                            ",
+			"patterns": [
+				{
+					"include": "#yamlcfn-variable"
+				}
+			]
+		},
+		"yamlcfn-interpolated-raw-out": {
+			"begin": "\\G(?=([^'\"\\|]))",
+			"captures": {
+				"0": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"contentName": "string.interpolated.sub.raw.yamlcfn",
+			"end": "(?x)\n                                (?=\n                                      \\s* $\n                                    | \\s+ \\#\n                                    | \\s* : (\\s|$)\n                                )\n                            ",
 			"patterns": [
 				{
 					"include": "#yamlcfn-variable"
