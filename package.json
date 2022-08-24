@@ -1,0 +1,84 @@
+{
+  "name": "aws-cloudformation-yaml-highlighter",
+  "displayName": "YAML Clouformation highlighter",
+  "description": "This extension will enhance the existing YAML markdown by special commands and variables used within Cloudformation.",
+  "version": "1.0",
+  "icon": "logo.png",
+  "publisher": "paql4711",
+  "license": "MIT",
+  "keywords": [
+		"amazon",
+		"aws",
+		"cloudformation",
+		"cfn",
+		"cloud",
+		"markdown",
+		"highlighter",
+		"highlight",
+		"resource",
+		"yaml",
+		"yml"
+	],
+  "repository": {
+    "url": "https://github.com/paql4711/vscode-yaml-cfn-markdown.git"
+  },
+  "bugs": {
+    "url": "https://github.com/paql4711/vscode-yaml-cfn-markdown/issues"
+  },
+  "engines": {
+    "vscode": "*"
+  },
+  "categories": [
+    "Other"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "yamlcfn-injection"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "yamlcfn-injection",
+        "scopeName": "text.yamlcfn.markdown",
+        "path": "./syntaxes/yamlcfn.tmLanguage.json"
+        ,
+        "injectTo": [
+          "source.yaml"
+        ],
+        "embeddedLanguages": {
+          "meta.embedded.block.powershell": "powershell",
+          "meta.embedded.block.json": "json",
+          "meta.embedded.block.python": "python",
+          "meta.embedded.block.typescript": "typescript",
+          "meta.embedded.block.xml": "xml",
+          "meta.embedded.block.sql": "sql",
+          "meta.embedded.block.js": "js",
+          "meta.embedded.block.css": "css",
+          "meta.embedded.block.html": "html",
+          "meta.embedded.block.java": "java",
+          "meta.embedded.block.shellscript": "shellscript"
+        }
+      },
+      {
+        "language": "yamlcfn-injection",
+        "scopeName": "text.yamlcfn.markdown.functions",
+        "path": "./syntaxes/yamlcfn_functions.tmLanguage.json"
+        ,
+        "injectTo": [
+          "source.yaml"
+        ]
+      },
+      {
+        "language": "yamlcfn-injection",
+        "scopeName": "text.yamlcfn.markdown.functions.inner",
+        "path": "./syntaxes/yamlcfn_functions_inner.tmLanguage.json"
+        ,
+        "injectTo": [
+          "source.yaml"
+        ]
+      }
+    ]
+  },
+  "dependencies": {  }
+}

@@ -1,0 +1,323 @@
+{
+	"scopeName": "text.yamlcfn.markdown.functions",
+	"fileTypes": [],
+	"injectionSelector": "L:meta.property.yaml",
+	"patterns": [
+		{
+			"include": "#yamlcfn-function-injection"
+		}
+	],
+	"repository": {
+		"yamlcfn-function-injection": {
+			"patterns": [
+				{
+					"include": "#yamlcfn-functions"
+				},
+				{
+					"match": "!(And|Not|Equals|Or|Base64|Cidr|Sub|GetAtt|GetAZs|ImportValue|Select|Split|If|Select|FindInMap|Join|Contains|EachMemberEquals|EachMemberIn|RefAll|ValueOfAll|ValueOf)",
+					"name": "entity.name.function"
+				}
+			]
+		},
+		"yamlcfn-functions": {
+			"begin": "\\G(!|Fn::)((?=Sub(:)*\\s+)|(?=(Ref|GetAtt)(:)*\\s+(?=(\"|')*\\w))|(?=(ImportValue|GetAZs)(:)*\\s+(\"|')*\\w))",
+			"beginCaptures": {
+				"0": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"end": "(?=\\n|$|.\\#|,|\\])",
+			"patterns": [
+				{
+					"include": "#yamlcfn-function-sub"
+				},
+				{
+					"include": "#yamlcfn-function-ref"
+				},
+				{
+					"include": "#yamlcfn-function-import-value-get-az"
+				},
+				{
+					"include": "#yamlcfn-function-getatt"
+				}
+			]
+		},
+		"yamlcfn-function-sub": {
+			"begin": "\\G(Sub:*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.sub.yamlcfn"
+				}
+			},
+			"end": "^(?=\\S)|(?!\\G)",
+			"patterns": [
+				{
+					"include": "#yamlcfn-interpolated-double-quoted"
+				},
+				{
+					"include": "#yamlcfn-interpolated-single-quoted"
+				},
+				{
+					"include": "#yamlcfn-interpolated-raw"
+				}
+			]
+		},
+		"yamlcfn-function-ref": {
+			"begin": "\\G(Ref:*(\"|')*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"end": "(?=\\s|$|,|\\])|(?<=Ref:*\\s+..?)(\"|')",
+			"endCaptures": {
+				"3": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				},
+				"4": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				},
+				"5": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"patterns": [
+				{
+					"match": "#",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				},
+				{
+					"include": "#yamlcfn-parameter"
+				}
+			]
+		},
+		"yamlcfn-function-if": {
+			"begin": "\\G(If:*(\"|')*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"end": "(?=\n|$)",
+			"patterns": [
+				{
+					"include": "source.yaml#comment"
+				},
+				{
+					"include": "#yamlcfn-sequence"
+				}
+			]
+		},
+		"yamlcfn-function-import-value-get-az": {
+			"begin": "\\G((ImportValue|GetAZs):*(\"|')*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"end": "(?=\\s|$|,|\\])|(?<=(ImportValue|GetAZs):*\\s+..?)(\"|')",
+			"patterns": [
+				{
+					"match": "#",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				},
+				{
+					"include": "#yamlcfn-parameter"
+				}
+			]
+		},
+		"yamlcfn-function-getatt": {
+			"begin": "\\G(GetAtt:*(\"|')*)\\s+",
+			"beginCaptures": {
+				"1": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"end": "(?=\\ |\\t|$|,|\\])",
+			"patterns": [
+				{
+					"match": "#",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				},
+				{
+					"match": "(?<=\\w+)\\.(?=\\w+)",
+					"name": "punctuation.accessor.yamlcfn"
+				},
+				{
+					"include": "#yamlcfn-parameter"
+				},
+				{
+					"match": ".+",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				}
+			]
+		},
+		"yamlcfn-interpolated-raw": {
+			"begin": "\\G(?=([^'\"\\|]))",
+			"captures": {
+				"0": {
+					"name": "entity.name.function.yamlcfn"
+				}
+			},
+			"contentName": "string.interpolated.sub.raw.yamlcfn",
+			"end": "(?x)\n                                (?=\n                                      \\s* $\n                                    | \\s+ \\#\n                                    | \\s* : (\\s|$)\n                                    | \\s* : [\\[\\]{},]\n                                    | \\s* [\\[\\]{},]\n                                )\n                            ",
+			"patterns": [
+				{
+					"include": "#yamlcfn-variable"
+				}
+			]
+		},
+		"yamlcfn-interpolated-single-quoted": {
+			"begin": "\\G'",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"contentName": "string.interpolated.sub.single.quoted.yamlcfn",
+			"end": "'(?!')",
+			"patterns": [
+				{
+					"match": "''",
+					"name": "constant.character.escape.single-quoted.yaml"
+				},
+				{
+					"include": "#yamlcfn-variable"
+				}
+			]
+		},
+		"yamlcfn-interpolated-double-quoted": {
+			"begin": "\\G\"",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"end": "\"",
+			"contentName": "string.interpolated.sub.double.quoted.yamlcfn",
+			"patterns": [
+				{
+					"match": "\\\\([0abtnvfre \"/\\\\N_Lp]|x\\d\\d|u\\d{4}|U\\d{8})",
+					"name": "constant.character.escape.yaml"
+				},
+				{
+					"match": "\\\\\\n",
+					"name": "constant.character.escape.double-quoted.newline.yaml"
+				},
+				{
+					"include": "#yamlcfn-variable"
+				}
+			]
+		},
+		"yamlcfn-variable": {
+			"begin": "\\${",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				}
+			},
+			"end": "}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"name":"meta.embedded.line.yamlcfn",
+			"patterns": [
+				{
+					"include": "#yamlcfn-static"
+				},
+				{
+					"match": "(?<=\\w+)\\.(?=\\w+)",
+					"name": "punctuation.accessor.yamlcfn"
+				},
+				{
+					"include": "#yamlcfn-parameter-raw"
+				},
+				{
+					"match": ".",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				}
+			]
+		},
+		"yamlcfn-parameter": {
+			"patterns": [
+				{
+					"include": "#yamlcfn-static"
+				},
+				{
+					"include": "#yamlcfn-parameter-quoted"
+				},
+				{
+					"include": "#yamlcfn-parameter-raw"
+				}
+			]
+		},
+		"yamlcfn-parameter-quoted": {
+			"begin": "\\G(\"|')",
+			"end": "(?=[^A-Za-z0-9-])\\1",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"patterns": [
+				
+				{
+					"include": "#yamlcfn-static"
+				},
+				{
+					"match": "\\G\\w+",
+					"name": "variable.other.object.quoted.yamlcfn"
+				},
+				{
+					"match": "(?<=\\.)\\w+",
+					"name": "variable.other.property.quoted.yamlcfn"
+				},
+				{
+					"match": "(?<=\\w+)\\.(?=\\w+)",
+					"name": "punctuation.accessor.yamlcfn"
+				}
+			]
+		},
+		"yamlcfn-parameter-raw": {
+			"begin": "(?=\\w)",
+			"end": "(?=[^A-Za-z0-9-])",
+			"patterns": [
+				
+				{
+					"match": "(?<=\\.)\\w+",
+					"name": "variable.other.property.raw.yamlcfn"
+				},
+				{
+					"match": "\\G\\w+",
+					"name": "variable.other.object.raw.yamlcfn"
+				},
+				{
+					"match": "'|\"",
+					"name": "invalid.illegal.expected-comment-or-newline.yaml"
+				}
+			]
+		},
+		"yamlcfn-static": {
+			"begin": "(AWS::)",
+			"end": "(?=[^::\\w])",
+			"name": "variable.language.constant.object.awsstatic.yamlcfn"
+		}
+	}
+}

@@ -1,0 +1,44 @@
+{
+	"scopeName": "text.yamlcfn.markdown.functions.inner",
+	"fileTypes": [],
+	"injectionSelector": "L:meta.flow-sequence.yaml",
+	"patterns": [
+		{
+			"include": "#yamlcfn-function-sub-inner"
+		},
+		{
+			"match": "(Fn::(And|Not|Equals|Or|Base64|Cidr|Ref|Sub|Contains|EachMemberEquals|EachMemberIn|RefAll|ValueOf|ValueOfAll|GetAtt|GetAZs|ImportValue|Select|Split|If|Select|FindInMap|Join):)",
+			"name": "entity.name.function"
+		}
+	],
+	"repository": {
+		"yamlcfn-function-sub-inner": {
+			"begin": "(!Sub|Fn::Sub:)\\s+",
+			"end": "(?x)('|\")*(?=      \\s* $    | \\s+ \\#    | \\s* : (\\s|$)    | \\s* : [\\[\\]{},]    | \\s* [\\[\\]{},])",
+			"beginCaptures": {
+				"0": {
+					"name": "entity.name.function.sub.inner.yamlcfn"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+			"patterns": [
+				{
+					"include": "text.yamlcfn.markdown#yamlcfn-variable"
+				},
+				{
+					"include": "text.yamlcfn.markdown#yamlcfn-interpolated-double-quoted"
+				},
+				{
+					"include": "text.yamlcfn.markdown#yamlcfn-interpolated-single-quoted"
+				},
+				{
+					"include": "text.yamlcfn.markdown#yamlcfn-interpolated-raw"
+				}
+			]
+		}
+	}
+}
