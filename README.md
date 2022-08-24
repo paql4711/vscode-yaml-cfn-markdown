@@ -1,6 +1,6 @@
 # VSCode YAML Grammar Injection for AWS Cloudformation support 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/paql4711.aws-cloudformation-yaml-highlighter.svg?style=flat)](https://marketplace.visualstudio.com/items?itemName=paql4711.aws-cloudformation-yaml-highlighter)
-[![Version](https://img.shields.io/visual-studio-marketplace/d/paql4711.aws-cloudformation-yaml-highlighter.svg?style=flat)](https://marketplace.visualstudio.com/items?itemName=paql4711.aws-cloudformation-yaml-highlighter)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/paql4711.yaml-cloudformation-highlighter.svg?style=flat)](https://marketplace.visualstudio.com/items?itemName=paql4711.yaml-cloudformation-highlighter)
+[![Version](https://img.shields.io/visual-studio-marketplace/d/paql4711.yaml-cloudformation-highlighter.svg?style=flat)](https://marketplace.visualstudio.com/items?itemName=paql4711.yaml-cloudformation-highlighter)
 
 AWS Cloudformation relies on YAML with the addition of several functions, inline codes and variables.
 These are only partially highlighted within the default YAML markup, so the extension will support highlighting relevant parts of the code.
