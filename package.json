@@ -1,5 +1,5 @@
 {
-  "name": "aws-cloudformation-yaml-highlighter",
+  "name": "yaml-cloudformation-highlighter",
   "displayName": "YAML Clouformation highlighter",
   "description": "This extension will enhance the existing YAML markdown by special commands and variables used within Cloudformation.",
   "version": "1.0",
