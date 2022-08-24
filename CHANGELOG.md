@@ -1,4 +1,4 @@
 # Change Log
 
-## [Unreleased]
+## [2.0]
 - Initial release
