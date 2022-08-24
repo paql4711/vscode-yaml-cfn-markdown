@@ -2,7 +2,7 @@
   "name": "yaml-cloudformation-highlighter",
   "displayName": "YAML Clouformation highlighter",
   "description": "This extension will enhance the existing YAML markdown by special commands and variables used within Cloudformation.",
-  "version": "1.0",
+  "version": "2.0.0",
   "icon": "logo.png",
   "publisher": "paql4711",
   "license": "MIT",
@@ -62,8 +62,8 @@
       },
       {
         "language": "yamlcfn-injection",
-        "scopeName": "text.yamlcfn.markdown.functions",
-        "path": "./syntaxes/yamlcfn_functions.tmLanguage.json"
+        "scopeName": "text.yamlcfn.markdown.functions.inner",
+        "path": "./syntaxes/yamlcfn_functions_inner.tmLanguage.json"
         ,
         "injectTo": [
           "source.yaml"
@@ -71,8 +71,8 @@
       },
       {
         "language": "yamlcfn-injection",
-        "scopeName": "text.yamlcfn.markdown.functions.inner",
-        "path": "./syntaxes/yamlcfn_functions_inner.tmLanguage.json"
+        "scopeName": "text.yamlcfn.markdown.functions",
+        "path": "./syntaxes/yamlcfn_functions.tmLanguage.json"
         ,
         "injectTo": [
           "source.yaml"
