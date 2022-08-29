@@ -294,15 +294,15 @@
 					"include": "#yamlcfn-static"
 				},
 				{
-					"match": "\\G\\w+",
+					"match": "\\G[\\w|-]+",
 					"name": "variable.other.object.quoted.yamlcfn"
 				},
 				{
-					"match": "(?<=\\.)\\w+",
+					"match": "(?<=\\.)[\\w|-]+",
 					"name": "variable.other.property.quoted.yamlcfn"
 				},
 				{
-					"match": "(?<=\\w+)\\.(?=\\w+)",
+					"match": "(?<=[\\w|-]+)\\.(?=[\\w|-]+)",
 					"name": "punctuation.accessor.yamlcfn"
 				}
 			]
@@ -313,11 +313,11 @@
 			"patterns": [
 				
 				{
-					"match": "(?<=\\.)\\w+",
+					"match": "(?<=\\.)[\\w|-]+",
 					"name": "variable.other.property.raw.yamlcfn"
 				},
 				{
-					"match": "\\G\\w+",
+					"match": "\\G[\\w|-]+",
 					"name": "variable.other.object.raw.yamlcfn"
 				},
 				{
