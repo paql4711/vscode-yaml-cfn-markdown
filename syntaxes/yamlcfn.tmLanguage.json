@@ -664,6 +664,10 @@
 						{
 							"match": "!Sub|Fn::Sub:",
 							"name": "entity.name.function.yamlcfn"
+						},
+						{
+							"include": "source.yaml#comment"
+							
 						}
 					]
 				}
