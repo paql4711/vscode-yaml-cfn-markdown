@@ -713,7 +713,7 @@
 		"yamlcfn-iam-actions": {
 			"begin":"^\\s+(-|-*\\s+Action:) ?('|\"| )(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
 
-			"end":"$|\\2",
+			"end":"\\2",
 			"beginCaptures": {
 				"1":{
 					"patterns":[
