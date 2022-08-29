@@ -44,7 +44,7 @@
 			]
 		},
 		"yamlcfn-class": {
-			"begin": "(?<=^(\\s+Type:))\\s+(\"|')*",
+			"begin": "(?<=^(\\s{4}Type:))\\s+(\"|')*",
 			"end": "(?=[^::\\w])(\"|')*",
 			"beginCaptures": {
 				"0": {
