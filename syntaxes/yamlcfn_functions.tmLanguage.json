@@ -102,9 +102,6 @@
 			"patterns": [
 				{
 					"include": "source.yaml#comment"
-				},
-				{
-					"include": "#yamlcfn-sequence"
 				}
 			]
 		},
