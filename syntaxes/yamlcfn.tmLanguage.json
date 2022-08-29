@@ -327,7 +327,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.ps1.yamlcfn",
+					"name": "source.powershell",
 					"patterns": [
 						{
 							"include": "source.powershell"
@@ -359,7 +359,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.json.yamlcfn",
+					"name": "source.json",
 					"patterns": [
 						{
 							"include": "source.json"
@@ -391,7 +391,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.py.yamlcfn",
+					"name": "source.python",
 					"patterns": [
 						{
 							"include": "source.python"
@@ -423,7 +423,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.sh.yamlcfn",
+					"name": "source.shell",
 					"patterns": [
 						{
 							"include": "source.shell"
@@ -455,7 +455,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.ts.yamlcfn",
+					"name":  "source.ts",
 					"patterns": [
 						{
 							"include": "source.ts"
@@ -487,7 +487,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.xml.yamlcfn",
+					"name": "text.xml",
 					"patterns": [
 						{
 							"include": "text.xml"
@@ -519,7 +519,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.sql.yamlcfn",
+					"name": "source.sql",
 					"patterns": [
 						{
 							"include": "source.sql"
@@ -551,7 +551,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.js.yamlcfn",
+					"name": "source.js",
 					"patterns": [
 						{
 							"include": "source.js"
@@ -583,7 +583,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.html.yamlcfn",
+					"name": "text.html.basic",
 					"patterns": [
 						{
 							"include": "text.html.basic"
@@ -615,7 +615,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.css.yamlcfn",
+					"name": "source.css.scss",
 					"patterns": [
 						{
 							"include": "source.css.scss"
@@ -647,7 +647,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"name": "string.unquoted.block.java.yamlcfn",
+					"name": "source.java",
 					"patterns": [
 						{
 							"include": "source.java"
@@ -702,7 +702,7 @@
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
-					"contentName": "string.interpolated.sub.yamlcfn",
+					"contentName": "string.interpolated.block.sub.yamlcfn",
 					"patterns": [
 						{
 							"include": "source.yaml#comment"
