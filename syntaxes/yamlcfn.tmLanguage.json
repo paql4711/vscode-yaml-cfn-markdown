@@ -4,7 +4,7 @@
 	"injectionSelector": "L:source.yaml -comment",
 	"patterns": [
 		{
-			"include": "#comment"
+			"include": "source.yaml#comment"
 		},
 		{
 			"include": "#yamlcfn-keywords"
@@ -37,9 +37,6 @@
 				},
 				{
 					"include": "#yamlcfn-types"
-				},
-				{
-					"include": "#yamlcfn-resources"
 				},
 				{
 					"include": "#yamlcfn-main-object"
