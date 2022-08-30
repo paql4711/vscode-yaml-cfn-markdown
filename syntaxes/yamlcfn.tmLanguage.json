@@ -420,11 +420,31 @@
 			},
 			"end": "^(?=\\S)|(?!\\G)",
 			"patterns": [
+				
 				{
 					"begin": "^([ ]+)(?! )",
 					"end": "^(?!\\1|\\s*$)",
 					"name": "source.shell",
 					"patterns": [
+						{
+                    "begin": "(<<)\\s*(\"|')\\s*\\\\?([^;&<\\s]+)\\2",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "keyword.operator.heredoc.shell"
+                        },
+                        "3": {
+                            "name": "keyword.control.heredoc-token.shell"
+                        }
+                    },
+					"comment":"Adding closure for heredoc shell after any amount of whitespace since shell will only recognize it as initial character which is impossible for inline code.",
+                    "end": "^\\s+(\\3)(?=\\s|;|&|$)",
+                    "endCaptures": {
+                        "1": {
+                            "name": "keyword.control.heredoc-token.shell"
+                        }
+                    },
+                    "name": "string.unquoted.heredoc.shell"
+                },
 						{
 							"include": "source.shell"
 						}
