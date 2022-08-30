@@ -66,7 +66,7 @@
 			"begin": "\\G(Ref:*(\"|')*)\\s+",
 			"beginCaptures": {
 				"1": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.ref.yamlcfn"
 				}
 			},
 			"end": "(?=\\s|$|,|\\]|\\})|(?<=Ref:*\\s+..?)(\"|')",
@@ -95,7 +95,7 @@
 			"begin": "\\G(If:*(\"|')*)\\s+",
 			"beginCaptures": {
 				"1": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.if.yamlcfn"
 				}
 			},
 			"end": "(?=\n|$)",
@@ -109,7 +109,7 @@
 			"begin": "\\G((ImportValue|GetAZs):*(\"|')*)\\s+",
 			"beginCaptures": {
 				"1": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.importvalue.yamlcfn"
 				}
 			},
 			"end": "(?=\\s|$|,|\\]|\\})|(?<=(ImportValue|GetAZs):*\\s+..?)(\"|')",
@@ -127,7 +127,7 @@
 			"begin": "\\G(GetAtt:*(\"|')*)\\s+",
 			"beginCaptures": {
 				"1": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.getatt.yamlcfn"
 				}
 			},
 			"end": "(?=\\ |\\t|$|,|\\]|\\})",
@@ -153,7 +153,7 @@
 			"begin": "\\G(?=([^'\"\\|]))",
 			"captures": {
 				"0": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.sub.in.yamlcfn"
 				}
 			},
 			"contentName": "string.interpolated.sub.raw.in.yamlcfn",
@@ -168,7 +168,7 @@
 			"begin": "\\G(?=([^'\"\\|]))",
 			"captures": {
 				"0": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.sub.out.yamlcfn"
 				}
 			},
 			"contentName": "string.interpolated.sub.out.raw.yamlcfn",
