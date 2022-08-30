@@ -104,7 +104,7 @@
 							"name": "punctuation.definition.template-expression.begin.cfnyaml"
 						},
 						"2": {
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.resolve.yamlcfn"
 						}
 					},
 					"endCaptures": {
@@ -112,7 +112,7 @@
 							"name": "punctuation.definition.template-expression.end.cfnyaml"
 						},
 						"1": {
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.resolve.yamlcfn"
 						}
 					},
 					"end": "(}})\\1",
@@ -138,7 +138,7 @@
 							"name": "punctuation.definition.template-expression.begin.cfnyaml"
 						},
 						"2": {
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.resolve-secret.yamlcfn"
 						}
 					},
 					"endCaptures": {
@@ -146,7 +146,7 @@
 							"name": "punctuation.definition.template-expression.end.cfnyaml"
 						},
 						"1": {
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.resolve-secret.yamlcfn"
 						}
 					},
 					"end": "(}})\\1",
@@ -171,7 +171,7 @@
 			"begin":"((?<=^\\s+\\w+:\\s+)|(?<=^\\s+-*\\s+)|(?<=^\\s+-))(\"|')*Fn::(?=(Sub|Ref|ImportValue|GetAtt|GetAZs):\\s+(\"|')*\\w)",
 			"beginCaptures": {
 				"0": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.fn.yamlcfn"
 				}
 			},
 			"end": "(?=\\n|$|.\\#|,|\\])",
@@ -204,7 +204,7 @@
 			"begin": "(!|Fn::)Sub(:)*\\s*\\n",
 			"beginCaptures": {
 				"0": {
-					"name": "entity.name.function.yamlcfn"
+					"name": "entity.name.function.sub.multiline.yamlcfn"
 				}
 			},
 			"end": "^(?=\\S)|(?!\\G)",
@@ -247,7 +247,7 @@
 					"patterns": [
 						{
 							"match": "(!|Fn::)\\w+:*\\s+",
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.block.yamlcfn"
 						},
 						{
 							"match": ".+",
@@ -683,7 +683,7 @@
 					"patterns": [
 						{
 							"match": "!Sub|Fn::Sub:",
-							"name": "entity.name.function.yamlcfn"
+							"name": "entity.name.function.sub.block.yamlcfn"
 						},
 						{
 							"include": "source.yaml#comment"
@@ -735,7 +735,7 @@
 			]
 		},
 		"yamlcfn-iam-actions-quoted": {
-			"begin":"^\\s+(-|-*\\s+Action:) ?('|\")(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
+			"begin":"^\\s+(-|-*\\s+Action:) ?('|\")([0-9A-Za-z\\*]+)(:)([0-9A-Za-z\\*]+)(?=('|\")\\s+(#|$))",
 
 			"end":"\\2",
 			"beginCaptures": {
@@ -754,36 +754,25 @@
 				},
 				"2": {
 					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				},
+				"3": {
+					"name": "support.type.iam.yamlcfn"
+				},
+				"4": {
+					"name": "punctuation.accessor.yamlcfn"
+				},
+				"5": {
+					"name": "support.constant.property-value.quoted.iam.yamlcfn"
 				}
 			},
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.template-expression.end.cfnyaml"
 				}
-			},
-
-			"patterns": [
-				{
-					"match":":",
-					"name": "punctuation.accessor.yamlcfn"
-				},
-				{
-					"match":"\\G[0-9A-Za-z\\*]+(?=:)",
-					"name": "support.type.iam.yamlcfn"
-				},
-				{
-					"match":"(?<=:)[0-9A-Za-z\\*]+",
-					"name": "support.constant.property-value.quoted.iam.yamlcfn"
-				},
-				{
-					"match":".+",
-					"name": "invalid.illegal.yamlcfn"
-				}
-			
-			]
+			}
 		},
 		"yamlcfn-iam-actions-raw": {
-			"begin":"^\\s+(-|-*\\s+Action:) ?( )(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
+			"begin":"^\\s+(-|-*\\s+Action:) ?( )([0-9A-Za-z\\*]+)(:)([0-9A-Za-z\\*]+)(?=\\s+(#|$))",
 
 			"end":"(?=$| )",
 			"beginCaptures": {
@@ -800,31 +789,21 @@
 					]
 					
 				},
-				"2": {
-					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				"3": {
+					"name": "support.type.iam.yamlcfn"
+				},
+				"4": {
+					"name": "punctuation.accessor.yamlcfn"
+				},
+				"5": {
+					"name": "support.constant.property-value.quoted.iam.yamlcfn"
 				}
 			},
 			"endCaptures": {
 				"0": {
 					"name": "punctuation.definition.template-expression.end.cfnyaml"
 				}
-			},
-
-			"patterns": [
-				{
-					"match":":",
-					"name": "punctuation.accessor.yamlcfn"
-				},
-				{
-					"match":"\\G[0-9A-Za-z\\*]+(?=:)",
-					"name": "support.type.iam.yamlcfn"
-				},
-				{
-					"match":"(?<=:)[0-9A-Za-z\\*]+",
-					"name": "support.constant.property-value.raw.iam.yamlcfn"
-				}
-			
-			]
+			}
 		}
 	}
 }
