@@ -4,9 +4,6 @@
 	"injectionSelector": "L:source.yaml -comment",
 	"patterns": [
 		{
-			"include": "source.yaml#comment"
-		},
-		{
 			"include": "#yamlcfn-keywords"
 		},
 		{
@@ -768,7 +765,7 @@
 		"yamlcfn-iam-actions-raw": {
 			"begin":"^\\s+(-|-*\\s+Action:) ?( )(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
 
-			"end":"$| ",
+			"end":"(?=$| )",
 			"beginCaptures": {
 				"1":{
 					"patterns":[
