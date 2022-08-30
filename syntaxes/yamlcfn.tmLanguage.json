@@ -19,7 +19,10 @@
 			"include": "#yamlcfn-multi-line-sub"
 		},
 		{
-			"include": "#yamlcfn-iam-actions"
+			"include": "#yamlcfn-iam-actions-quoted"
+		},
+		{
+			"include": "#yamlcfn-iam-actions-raw"
 		},
 		{
 			"include":"#yamlcfn-function-fn"
@@ -714,8 +717,8 @@
 				}
 			]
 		},
-		"yamlcfn-iam-actions": {
-			"begin":"^\\s+(-|-*\\s+Action:) ?('|\"| )(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
+		"yamlcfn-iam-actions-quoted": {
+			"begin":"^\\s+(-|-*\\s+Action:) ?('|\")(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
 
 			"end":"\\2",
 			"beginCaptures": {
@@ -753,7 +756,55 @@
 				},
 				{
 					"match":"(?<=:)[0-9A-Za-z\\*]+",
-					"name": "support.constant.property-value.iam.yamlcfn"
+					"name": "support.constant.property-value.quoted.iam.yamlcfn"
+				},
+				{
+					"match":".+",
+					"name": "invalid.illegal.yamlcfn"
+				}
+			
+			]
+		},
+		"yamlcfn-iam-actions-raw": {
+			"begin":"^\\s+(-|-*\\s+Action:) ?( )(?=[0-9A-Za-z\\*]+:[0-9A-Za-z\\*]+('|\")*\\s+(#|$))",
+
+			"end":"$| ",
+			"beginCaptures": {
+				"1":{
+					"patterns":[
+						{
+							"name":"punctuation.definition.block.sequence.item.yaml",
+							"match":"-"
+						},
+						{
+							"name":"entity.name.tag",
+							"match":"Action:"
+						}
+					]
+					
+				},
+				"2": {
+					"name": "punctuation.definition.template-expression.begin.cfnyaml"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.definition.template-expression.end.cfnyaml"
+				}
+			},
+
+			"patterns": [
+				{
+					"match":":",
+					"name": "punctuation.accessor.yamlcfn"
+				},
+				{
+					"match":"\\G[0-9A-Za-z\\*]+(?=:)",
+					"name": "support.type.iam.yamlcfn"
+				},
+				{
+					"match":"(?<=:)[0-9A-Za-z\\*]+",
+					"name": "support.constant.property-value.raw.iam.yamlcfn"
 				}
 			
 			]
