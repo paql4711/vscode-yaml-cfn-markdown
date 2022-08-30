@@ -1,4 +1,12 @@
 # Change Log
+## [2.0.3]
+- Bugs
+    - Functions within curly braces will now close properly
+    - IAM Actions not closed with " or ' are now showing invalid values afterwards
+    - IAM Actions raw are now properly closed and allow comments
+    - Comments as initial character in line are now respected
+    - Shellscript syntax highlighting will now recognize heredoc closing
+
 ## [2.0.2]
 - Bugs
     - !Sub | will not allow comment in the same line
