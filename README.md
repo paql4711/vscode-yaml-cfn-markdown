@@ -59,6 +59,6 @@ Following file extensions / codes are supported in the current version:
 
 ## Contribution
 The entire project is open source and can be found on:
-- https://github.com/paql4711/paql4711-vscode-yaml-cfn-markdown
+- https://github.com/paql4711/vscode-yaml-cfn-markdown
 
 In case you experience any issues please raise them directly within GitHub, for contributing please feel free to raise a pull request.
