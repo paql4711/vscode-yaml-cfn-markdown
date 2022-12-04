@@ -1,10 +1,11 @@
 # Change Log
 ## [2.0.4]
-
+- Bug
+    - Fixing a bug with piped Sub where missing space is not causing error
+    - Fix contribution url 
 - Improvements
     - Function scopes are now unique
     - IAM action pattern performance improved
-    - Fix contribution url
 ## [2.0.3]
 - Bugs
     - Functions within curly braces will now close properly
