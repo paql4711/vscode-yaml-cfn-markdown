@@ -238,7 +238,7 @@
 			]
 		},
 		"yamlcfn-block": {
-			"begin": "((!|Fn::)(Sub):*.+)*\\|\\s*(?=#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh)(\\s*(#.*)*\\n?))",
+			"begin": "((!|Fn::)(Sub):*.+)*\\|\\s+(?=#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh)(\\s*(#.*)*\\n?))",
 			"beginCaptures": {
 				"0": {
 					"name": "keyword.control.flow.block-scalar.literal.yaml"
@@ -677,7 +677,7 @@
 			]
 		},
 		"yamlcfn-interpolated-block-sub": {
-			"begin": "((!|Fn::)Sub:?.+)(?=(\\|)(?!\\s*\\#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh))(.*\\n?))",
+			"begin": "((!|Fn::)Sub:?.+)(?=(\\|)(?!\\s+\\#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh))(.*\\n?))",
 			"beginCaptures": {
 				"1": {
 					"patterns": [
@@ -703,13 +703,16 @@
 			]
 		},
 		"yamlcfn-interpolated-block": {
-			"begin": "(\\|)(?!\\s*\\#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh))(.*\\n?)",
+			"begin": "(\\|)(?!\\s+\\#\\.(ps1|html|css|js|ts|java|sql|xml|json|py|sh))(.*\\n?)",
 			"beginCaptures": {
 				"1": {
 					"name": "keyword.control.flow.block-scalar.literal.yaml"
 				},
 				"3": {
 					"patterns": [
+						{
+							"include": "source.yaml#comment"
+						},
 						{
 							"match": ".+",
 							"name": "invalid.illegal.expected-comment-or-newline.yaml"
